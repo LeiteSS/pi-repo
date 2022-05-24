@@ -1,0 +1,35 @@
+server:
+  port: ${PORT:5000}
+
+spring:
+  mvc:
+    pathmatch:
+      matching-strategy: ant_path_matcher
+
+  application:
+    name: loan_api
+
+
+  datasource:
+    driver-class-name: org.postgresql.Driver
+    url: ${DATABASE_URI}
+    username: ${DATABASE_USERNAME}
+    password: ${DATABASE_PASSWORD}
+    initialization-mode: always
+
+  api:
+    version: 1.0.0
+
+  jpa:
+    hibernate:
+      ddl-auto: update
+    show-sql: true
+    database: postgresql
+    database-platform: org.hibernate.dialect.PostgreSQLDialect
+    format_sql: true
+
+security:
+  config:
+    prefix: Bearer
+    key: ${SECRET_KEY}
+    EXPIRATION: 3600000
