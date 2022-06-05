@@ -2,7 +2,6 @@ package br.edu.fateczl.radar.controller.docs;
 
 import br.edu.fateczl.radar.dto.CadastroVoluntarioDTO;
 import br.edu.fateczl.radar.dto.ErrorDTO;
-import br.edu.fateczl.radar.dto.SignupDTO;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import io.swagger.annotations.ApiResponse;
@@ -21,6 +20,6 @@ public interface VoluntariosControllerDocs {
     @ApiResponses(value = {
             @ApiResponse(code = 200, message = "Voluntarios Cadastrado no sistema", response = CadastroVoluntarioDTO.class, responseContainer = "object"),
             @ApiResponse(code = 400, message = "Dados informados para a requisição estão inconsistentes", response = ErrorDTO.class, responseContainer = "object")})
-    @PostMapping("/signUp")
+    @PostMapping
     public ResponseEntity<CadastroVoluntarioDTO> create(@RequestBody @Valid CadastroVoluntarioDTO profileInformationDTO);
 }

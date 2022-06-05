@@ -15,7 +15,7 @@ import java.util.List;
 import java.util.Optional;
 
 @RestController
-@CrossOrigin(origins = "*")
+@CrossOrigin(origins = "http://localhost:4200/")
 @RequestMapping("/api/v1/desaparecidos")
 public class DesaparecidosController implements DesaparecidosControllerDocs {
 
@@ -31,11 +31,13 @@ public class DesaparecidosController implements DesaparecidosControllerDocs {
 
     @Override
     public ResponseEntity<List<Desaparecido>> listDesaparecidos() {
-        return ResponseEntity.ok(service.listLoans());
+        return ResponseEntity.ok(service.list());
     }
 
-    @Override
-    public ResponseEntity<Optional<Desaparecido>> detailLoan(Long id) {
-        return ResponseEntity.ok(service.detailLoan(id));
+    //@Override
+    @GetMapping("/{id}")
+    public ResponseEntity detail(@PathVariable Long id) {
+        return ResponseEntity.ok().body(service.detailDesaparecido(id));
     }
+
 }

@@ -38,12 +38,6 @@ public class Endereco {
     private String cidade;
 
     @Column(nullable = false)
-    private String estado;
-
-    @Column(nullable = false)
-    private Integer numero;
-
-    @Column(nullable = false)
     private String cep;
 
     private Long idVoluntario;

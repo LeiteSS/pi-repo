@@ -1,8 +1,7 @@
 package br.edu.fateczl.radar.model;
 
-import java.util.Arrays;
-import java.util.Collection;
 import java.util.List;
+import java.util.Map;
 
 import javax.persistence.CascadeType;
 import javax.persistence.CollectionTable;
@@ -18,6 +17,7 @@ import javax.persistence.JoinColumn;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -36,8 +36,17 @@ public class Desaparecido {
     @Column(name = "id_desaparecido")
     private Long id;
 
+    @Column(name = "nome_completo")
+    private String nomeCompletoDesaparecido;
+
     @Column(name = "desaparecimento")
     private String dataEHoraDesaparecimento;
+
+    @Column(name = "data_de_nascimento")
+    private String dataDeNascimento;
+
+    @Column(name = "recompensa")
+    private String recompensa;
 
     @Column(name = "url_foto_principal")
     private String urlFotoPrincipal;
@@ -48,12 +57,16 @@ public class Desaparecido {
     @Column(name = "descricao_desaparecimento")
     private String descricaoDesaparecimento;
 
-    @OneToMany(mappedBy = "desaparecido", fetch = FetchType.LAZY, cascade = CascadeType.MERGE, orphanRemoval = true)
-    private List<Foto> fotos;
+    @JsonIgnore
+    @ElementCollection(fetch = FetchType.LAZY)
+    @CollectionTable(name = "fotos_desaparecidos", joinColumns = @JoinColumn(name = "desaparecido_id"))
+    @Column(name = "fotos_id")
+    private List<String> fotos;
 
+    @JsonIgnore
     @ManyToOne(cascade = { CascadeType.MERGE })
     @JoinColumn(name = "usuario_id", nullable = false)
     private Usuario usuario;
 
-    private Long desaparecidoId;
+    //private Long desaparecidoId;
 }

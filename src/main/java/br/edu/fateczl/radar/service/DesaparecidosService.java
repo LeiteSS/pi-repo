@@ -3,6 +3,7 @@ package br.edu.fateczl.radar.service;
 import br.edu.fateczl.radar.dto.DesaparecidoDTO;
 import br.edu.fateczl.radar.mapper.DesaparecidosMapper;
 import br.edu.fateczl.radar.model.Desaparecido;
+import br.edu.fateczl.radar.model.Foto;
 import br.edu.fateczl.radar.model.Usuario;
 import br.edu.fateczl.radar.repository.DesaparecidosRepository;
 import br.edu.fateczl.radar.repository.UsuariosRepository;
@@ -28,20 +29,33 @@ public class DesaparecidosService {
 
     public DesaparecidoDTO createDesaparecido(DesaparecidoDTO loanDTO, String token) throws Exception {
         Desaparecido desaparecido = new Desaparecido();
+        Foto foto = new Foto();
+
         Long userId = tokenService.getUserId(token);
         Usuario user = usuariosRepository.getById(userId);
         desaparecido.setUsuario(user);
-        Desaparecido desaparecidoSaved = desaparecidosRepository.save(desaparecido);
+        desaparecido.setDescricaoDesaparecimento(loanDTO.getDescricaoDesaparecimento());
+        desaparecido.setNomeCompletoDesaparecido(loanDTO.getNomeCompletoDesaparecido());
+        desaparecido.setDescricaoDesaparecimento(loanDTO.getDescricaoDesaparecimento());
+        desaparecido.setDataEHoraDesaparecimento(loanDTO.getDataEHoraDesaparecimento());
+        desaparecido.setAltTxtFotoPrincipal(loanDTO.getAltTxtFotoPrincipal());
+        desaparecido.setUrlFotoPrincipal(loanDTO.getUrlFotoPrincipal());
+        desaparecido.setDataDeNascimento(loanDTO.getDataDeNascimento());
+        desaparecido.setRecompensa(loanDTO.getRecompensa());
+        desaparecido.setDataDeNascimento(loanDTO.getDataDeNascimento());
+        desaparecido.setFotos(loanDTO.getFotos());
 
-        return mapper.toDTO(desaparecidoSaved);
+        desaparecidosRepository.save(desaparecido);
+
+        return loanDTO;
     }
 
-    public List<Desaparecido> listLoans() {
+    public List<Desaparecido> list() {
 
         return desaparecidosRepository.findAll();
     }
 
-    public Optional<Desaparecido> detailLoan(Long id) {
+    public Optional<Desaparecido> detailDesaparecido(Long id) {
 
         return desaparecidosRepository.findById(id);
     }

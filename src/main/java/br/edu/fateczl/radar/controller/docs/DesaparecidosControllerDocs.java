@@ -2,7 +2,6 @@ package br.edu.fateczl.radar.controller.docs;
 
 import br.edu.fateczl.radar.dto.DesaparecidoDTO;
 import br.edu.fateczl.radar.dto.ErrorDTO;
-import br.edu.fateczl.radar.dto.SignupDTO;
 import br.edu.fateczl.radar.model.Desaparecido;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -34,17 +33,17 @@ public interface DesaparecidosControllerDocs {
     @PostMapping
     public ResponseEntity<DesaparecidoDTO> create(@Valid @RequestBody DesaparecidoDTO desaparecidoDTO, HttpServletRequest request) throws Exception;
 
-    @ApiOperation(value = "Listar desaparecidos", nickname = "list", notes = "", response = Desaparecido.class, responseContainer = "object", tags = { "Users", })
+    @ApiOperation(value = "Listar desaparecidos", nickname = "list", notes = "", response = Desaparecido.class, responseContainer = "object", tags = { "Desaparecidos", })
     @ApiResponses(value = {
             @ApiResponse(code = 200, message = "Desaparecidos listados", response = Desaparecido.class, responseContainer = "object"),
             })
     @GetMapping
     public ResponseEntity<List<Desaparecido>> listDesaparecidos();
 
-    @ApiOperation(value = "Detalhar desaparecido", nickname = "detail", notes = "", response = Desaparecido.class, responseContainer = "object", tags = { "Users", })
+    /*@ApiOperation(value = "Detalhar desaparecido", nickname = "detail", notes = "", response = Desaparecido.class, responseContainer = "object", tags = { "Desaparecidos", })
     @ApiResponses(value = {
             @ApiResponse(code = 200, message = "Desaparecido detalhado", response = Desaparecido.class, responseContainer = "object"),
     })
-    @GetMapping({"/id"})
-    public ResponseEntity<Optional<Desaparecido>> detailLoan(@PathVariable Long id);
+    @GetMapping("/{id}")
+    public ResponseEntity<Optional<Desaparecido>> detailDesaparecido(@PathVariable Long id);*/
 }

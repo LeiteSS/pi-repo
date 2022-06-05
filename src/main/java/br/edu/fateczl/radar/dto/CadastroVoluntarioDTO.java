@@ -54,14 +54,6 @@ public class CadastroVoluntarioDTO {
     private String cidade;
 
     @NotNull
-    @ApiModelProperty(value = "Estado")
-    private String estado;
-
-    @NotNull
-    @ApiModelProperty(value = "Numero da casa")
-    private Integer numero;
-
-    @NotNull
     @ApiModelProperty(value = "CEP")
     private String cep;
 }

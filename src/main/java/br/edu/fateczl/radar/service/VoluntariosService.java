@@ -35,9 +35,7 @@ public class VoluntariosService {
         address.setLogadouro(profileInformationDTO.getLogradouro());
         address.setBairro(profileInformationDTO.getBairro());
         address.setCep(profileInformationDTO.getCep());
-        address.setNumero(profileInformationDTO.getNumero());
         address.setCidade(profileInformationDTO.getCidade());
-        address.setEstado(profileInformationDTO.getEstado());
         address.setIdVoluntario(userSaved.getId());
         addressesRepository.save(address);
 
