@@ -15,7 +15,7 @@ import java.util.List;
 import java.util.Optional;
 
 @RestController
-@CrossOrigin(origins = "http://localhost:4200/")
+@CrossOrigin(origins = "https://radar-client.netlify.app/")
 @RequestMapping("/api/v1/desaparecidos")
 public class DesaparecidosController implements DesaparecidosControllerDocs {
 
