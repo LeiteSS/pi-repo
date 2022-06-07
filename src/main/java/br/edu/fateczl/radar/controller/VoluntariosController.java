@@ -8,7 +8,8 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
-@CrossOrigin(origins = "https://radar-client.netlify.app/")
+//@CrossOrigin allow everyone
+@CrossOrigin(origins = { "http://localhost:4200/", "https://radar-client.netlify.app/" })
 @RequestMapping("/api/v1/voluntarios")
 public class VoluntariosController implements VoluntariosControllerDocs {
 
