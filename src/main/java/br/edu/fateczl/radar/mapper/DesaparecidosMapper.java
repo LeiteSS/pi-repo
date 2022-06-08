@@ -1,7 +1,7 @@
 package br.edu.fateczl.radar.mapper;
 
 import br.edu.fateczl.radar.dto.DesaparecidoDTO;
-import br.edu.fateczl.radar.model.Desaparecido;
+import br.edu.fateczl.radar.entity.Desaparecido;
 import org.mapstruct.Mapper;
 import org.mapstruct.factory.Mappers;
 

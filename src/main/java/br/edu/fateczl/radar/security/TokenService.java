@@ -2,7 +2,7 @@ package br.edu.fateczl.radar.security;
 
 import java.util.Date;
 
-import br.edu.fateczl.radar.model.Usuario;
+import br.edu.fateczl.radar.entity.Usuario;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.security.core.Authentication;
 import org.springframework.stereotype.Service;

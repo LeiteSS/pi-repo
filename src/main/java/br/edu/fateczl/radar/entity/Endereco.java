@@ -1,4 +1,4 @@
-package br.edu.fateczl.radar.model;
+package br.edu.fateczl.radar.entity;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -41,4 +41,6 @@ public class Endereco {
     private String cep;
 
     private Long idVoluntario;
+
+    private Long idDesaparecido;
 }

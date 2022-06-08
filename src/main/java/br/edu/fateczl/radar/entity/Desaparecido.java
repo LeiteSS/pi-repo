@@ -1,7 +1,6 @@
-package br.edu.fateczl.radar.model;
+package br.edu.fateczl.radar.entity;
 
 import java.util.List;
-import java.util.Map;
 
 import javax.persistence.CascadeType;
 import javax.persistence.CollectionTable;
@@ -14,7 +13,6 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
-import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
@@ -56,6 +54,15 @@ public class Desaparecido {
 
     @Column(name = "descricao_desaparecimento")
     private String descricaoDesaparecimento;
+
+    @Column(name = "doenca")
+    private String doenca;
+
+    @Column(name = "sexo")
+    private String sexo;
+
+    @Column(name = "cor_de_pele")
+    private String corDePele;
 
     @JsonIgnore
     @ElementCollection(fetch = FetchType.LAZY)

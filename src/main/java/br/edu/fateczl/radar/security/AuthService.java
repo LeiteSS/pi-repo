@@ -1,8 +1,7 @@
 package br.edu.fateczl.radar.security;
 
-import br.edu.fateczl.radar.model.Usuario;
+import br.edu.fateczl.radar.entity.Usuario;
 import br.edu.fateczl.radar.repository.UsuariosRepository;
-import br.edu.fateczl.radar.service.UsuariosService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;

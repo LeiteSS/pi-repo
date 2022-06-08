@@ -1,6 +1,6 @@
 package br.edu.fateczl.radar.repository;
 
-import br.edu.fateczl.radar.model.Usuario;
+import br.edu.fateczl.radar.entity.Usuario;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;

@@ -1,9 +1,6 @@
-package br.edu.fateczl.radar.model;
+package br.edu.fateczl.radar.entity;
 
 import lombok.*;
-
-import javax.persistence.*;
-import java.util.List;
 
 @Data
 @Builder

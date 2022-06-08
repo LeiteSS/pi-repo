@@ -1,4 +1,4 @@
-package br.edu.fateczl.radar.model;
+package br.edu.fateczl.radar.entity;
 
 import java.util.Arrays;
 import java.util.Collection;

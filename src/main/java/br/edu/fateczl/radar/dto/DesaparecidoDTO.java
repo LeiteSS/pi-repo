@@ -1,7 +1,5 @@
 package br.edu.fateczl.radar.dto;
 
-import br.edu.fateczl.radar.model.Foto;
-
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -10,10 +8,8 @@ import lombok.NoArgsConstructor;
 import io.swagger.annotations.ApiModelProperty;
 
 
-import javax.persistence.Column;
 import javax.validation.constraints.NotNull;
 import java.util.List;
-import java.util.Map;
 
 @Data
 @Builder
@@ -49,7 +45,34 @@ public class DesaparecidoDTO {
     @ApiModelProperty(value = "Descrição do Desaparecimento")
     private String descricaoDesaparecimento;
 
+    @NotNull
+    @ApiModelProperty(value = "Se possui alguma doença")
+    private String doenca;
+
+    @NotNull
+    @ApiModelProperty(value = "Sexo: masculino, feminino ou outros")
+    private String sexo;
+
+    @NotNull
+    @ApiModelProperty(value = "Cor de pele")
+    private String corDePele;
 
     @ApiModelProperty(value = "urls das fotos secundarias")
     private List<String> fotos;
+
+    @NotNull
+    @ApiModelProperty(value = "Logradouro")
+    private String logradouro;
+
+    @NotNull
+    @ApiModelProperty(value = "Bairro")
+    private String bairro;
+
+    @NotNull
+    @ApiModelProperty(value = "Cidade")
+    private String cidade;
+
+    @NotNull
+    @ApiModelProperty(value = "CEP")
+    private String cep;
 }

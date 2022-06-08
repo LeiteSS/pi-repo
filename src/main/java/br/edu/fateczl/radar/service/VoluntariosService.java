@@ -1,8 +1,8 @@
 package br.edu.fateczl.radar.service;
 
 import br.edu.fateczl.radar.dto.CadastroVoluntarioDTO;
-import br.edu.fateczl.radar.model.Endereco;
-import br.edu.fateczl.radar.model.Voluntario;
+import br.edu.fateczl.radar.entity.Endereco;
+import br.edu.fateczl.radar.entity.Voluntario;
 import br.edu.fateczl.radar.repository.EnderecoRepository;
 import br.edu.fateczl.radar.repository.VoluntariosRepository;
 import org.springframework.beans.factory.annotation.Autowired;

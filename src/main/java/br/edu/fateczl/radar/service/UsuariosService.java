@@ -4,7 +4,7 @@ import br.edu.fateczl.radar.dto.LoginDTO;
 import br.edu.fateczl.radar.dto.SignupDTO;
 import br.edu.fateczl.radar.dto.TokenDTO;
 import br.edu.fateczl.radar.mapper.UsuariosMapper;
-import br.edu.fateczl.radar.model.Usuario;
+import br.edu.fateczl.radar.entity.Usuario;
 import br.edu.fateczl.radar.repository.UsuariosRepository;
 import br.edu.fateczl.radar.security.TokenService;
 import org.springframework.beans.factory.annotation.Autowired;

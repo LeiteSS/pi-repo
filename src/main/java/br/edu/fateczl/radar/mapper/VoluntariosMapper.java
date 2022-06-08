@@ -1,7 +1,7 @@
 package br.edu.fateczl.radar.mapper;
 
 import br.edu.fateczl.radar.dto.CadastroVoluntarioDTO;
-import br.edu.fateczl.radar.model.Voluntario;
+import br.edu.fateczl.radar.entity.Voluntario;
 import org.mapstruct.factory.Mappers;
 
 public interface VoluntariosMapper {
