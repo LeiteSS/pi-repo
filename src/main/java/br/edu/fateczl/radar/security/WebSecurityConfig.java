@@ -52,6 +52,8 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                 .antMatchers(HttpMethod.POST,"/api/v1/voluntarios").permitAll()
                 .antMatchers(HttpMethod.GET,"/api/v1/desaparecidos").permitAll()
                 .antMatchers(HttpMethod.GET,"/api/v1/desaparecidos/{id}").permitAll()
+                .antMatchers(HttpMethod.POST,"/api/v1/desaparecidos/{id}/mensagem").permitAll()
+                .antMatchers(HttpMethod.POST,"/api/v1/desaparecidos/mensagem").permitAll()
                 .anyRequest().authenticated()
                 .and().cors()
                 .and().csrf().disable()

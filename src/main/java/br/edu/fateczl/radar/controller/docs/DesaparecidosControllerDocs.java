@@ -2,7 +2,10 @@ package br.edu.fateczl.radar.controller.docs;
 
 import br.edu.fateczl.radar.dto.DesaparecidoDTO;
 import br.edu.fateczl.radar.dto.ErrorDTO;
+import br.edu.fateczl.radar.dto.MensagemDTO;
+import br.edu.fateczl.radar.dto.MensagemSalvaDTO;
 import br.edu.fateczl.radar.entity.Desaparecido;
+import br.edu.fateczl.radar.entity.Mensagem;
 import br.edu.fateczl.radar.exception.NotFoundException;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -41,7 +44,7 @@ public interface DesaparecidosControllerDocs {
             @ApiResponse(code = 201, message = "Desaparecido atualizado"),
             @ApiResponse(code = 400, message = "Campos vazios ou incorretos")
     })
-    DesaparecidoDTO updateById(@PathVariable Long id, DesaparecidoDTO desaparecidoDTO, HttpServletRequest request) throws NotFoundException;
+    DesaparecidoDTO updateById(@PathVariable Long id, @Valid @RequestBody DesaparecidoDTO desaparecidoDTO, HttpServletRequest request) throws NotFoundException;
 
     @ApiOperation(value = "Deletar um desaparecido usando o id", authorizations = {
             @Authorization(value = "Authorization") }, tags = { "Desaparecidos", })
@@ -50,6 +53,21 @@ public interface DesaparecidosControllerDocs {
             @ApiResponse(code = 404, message = "Desaparecido não encontrado.")
     })
     void deleteById(@PathVariable Long id) throws NotFoundException;
+
+    @ApiOperation(value = "Reportar", nickname = "reportar", notes = "", response = MensagemSalvaDTO.class, responseContainer = "object", tags = { "Desaparecidos" })
+    @ApiResponses(value = {
+            @ApiResponse(code = 200, message = "reportado", response = MensagemSalvaDTO.class, responseContainer = "object"),
+            @ApiResponse(code = 400, message = "Dados informados para a requisição estão inconsistentes", response = ErrorDTO.class, responseContainer = "object"),
+            @ApiResponse(code = 404, message = "Desaparecido não encontrado") })
+    public ResponseEntity<MensagemSalvaDTO> reportar(@PathVariable Long id, @Valid @RequestBody MensagemDTO mensagemDTO) throws Exception;
+
+    @ApiOperation(value = "Listar mensagems", nickname = "list", notes = "", response = Mensagem.class, responseContainer = "object", authorizations = {
+            @Authorization(value = "Authorization") }, tags = { "Desaparecidos", })
+    @ApiResponses(value = {
+            @ApiResponse(code = 200, message = "Mensagens listados", response = Mensagem.class, responseContainer = "object"),
+    })
+    public List<Mensagem> listMensagens();
+
 
     /*@ApiOperation(value = "Detalhar desaparecido", nickname = "detail", notes = "", response = Desaparecido.class, responseContainer = "object", tags = { "Desaparecidos", })
     @ApiResponses(value = {

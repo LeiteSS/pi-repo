@@ -1,14 +1,14 @@
 package br.edu.fateczl.radar.service;
 
 import br.edu.fateczl.radar.dto.DesaparecidoDTO;
-import br.edu.fateczl.radar.entity.Endereco;
+import br.edu.fateczl.radar.dto.MensagemDTO;
+import br.edu.fateczl.radar.dto.MensagemSalvaDTO;
+import br.edu.fateczl.radar.entity.*;
 import br.edu.fateczl.radar.exception.NotFoundException;
 import br.edu.fateczl.radar.mapper.DesaparecidosMapper;
-import br.edu.fateczl.radar.entity.Desaparecido;
-import br.edu.fateczl.radar.entity.Foto;
-import br.edu.fateczl.radar.entity.Usuario;
 import br.edu.fateczl.radar.repository.DesaparecidosRepository;
 import br.edu.fateczl.radar.repository.EnderecoRepository;
+import br.edu.fateczl.radar.repository.MensagensRepository;
 import br.edu.fateczl.radar.repository.UsuariosRepository;
 import br.edu.fateczl.radar.security.TokenService;
 import com.fasterxml.jackson.databind.ObjectMapper;
@@ -29,9 +29,9 @@ public class DesaparecidosService {
 
     private UsuariosRepository usuariosRepository;
 
-    private DesaparecidosMapper mapper;
-
     private EnderecoRepository addressesRepository;
+
+    private MensagensRepository mensagensRepository;
 
     public DesaparecidoDTO createDesaparecido(DesaparecidoDTO desaparecidoDTO, String token) throws Exception {
         Desaparecido desaparecido = new Desaparecido();
@@ -115,6 +115,51 @@ public class DesaparecidosService {
         desaparecidosRepository.save(desaparecido);
 
         return desaparecidoDTO;
+    }
+
+    public List<Mensagem> listarMensagens() {
+        return mensagensRepository.findAll();
+    }
+
+
+    public MensagemSalvaDTO reportar(Long id, MensagemDTO mensagemDTO) throws NotFoundException {
+        Mensagem mensagem = new Mensagem();
+        MensagemSalvaDTO mensagemSalvaDTO = new MensagemSalvaDTO();
+
+        Desaparecido desaparecido = verifyIfExists(id);
+
+        mensagem.setIdDesaparecido(desaparecido.getId());
+        mensagem.setMensagem(mensagemDTO.getMensagem());
+        mensagem.setCpf(mensagemDTO.getCpf());
+        mensagem.setEmail(mensagemDTO.getEmail());
+        mensagem.setName(mensagemDTO.getName());
+        mensagem.setLastname(mensagemDTO.getLastname());
+        mensagem.setPhone(mensagemDTO.getPhone());
+
+        Mensagem mensagemSalva = mensagensRepository.save(mensagem);
+
+        mensagemSalvaDTO.setMensagem(mensagemSalva.getMensagem());
+        mensagemSalvaDTO.setDescricaoDesaparecimento(desaparecido.getDescricaoDesaparecimento());
+        mensagemSalvaDTO.setNomeCompletoDesaparecido(desaparecido.getNomeCompletoDesaparecido());
+        mensagemSalvaDTO.setDescricaoDesaparecimento(desaparecido.getDescricaoDesaparecimento());
+        mensagemSalvaDTO.setDataEHoraDesaparecimento(desaparecido.getDataEHoraDesaparecimento());
+        mensagemSalvaDTO.setAltTxtFotoPrincipal(desaparecido.getAltTxtFotoPrincipal());
+        mensagemSalvaDTO.setUrlFotoPrincipal(desaparecido.getUrlFotoPrincipal());
+        mensagemSalvaDTO.setDataDeNascimento(desaparecido.getDataDeNascimento());
+        mensagemSalvaDTO.setRecompensa(desaparecido.getRecompensa());
+        mensagemSalvaDTO.setDataDeNascimento(desaparecido.getDataDeNascimento());
+        mensagemSalvaDTO.setFotos(desaparecido.getFotos());
+        mensagemSalvaDTO.setCorDePele(desaparecido.getCorDePele());
+        mensagemSalvaDTO.setDoenca(desaparecido.getDoenca());
+        mensagemSalvaDTO.setSexo(desaparecido.getSexo());
+        mensagemSalvaDTO.setMensagem(mensagemDTO.getMensagem());
+        mensagemSalvaDTO.setCpf(mensagem.getCpf());
+        mensagemSalvaDTO.setEmail(mensagem.getEmail());
+        mensagemSalvaDTO.setName(mensagem.getName());
+        mensagemSalvaDTO.setLastname(mensagem.getLastname());
+        mensagemSalvaDTO.setPhone(mensagem.getPhone());
+
+        return mensagemSalvaDTO;
     }
 
     private Desaparecido verifyIfExists(Long id) throws NotFoundException {
